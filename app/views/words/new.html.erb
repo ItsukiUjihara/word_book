@@ -1,0 +1,8 @@
+<h1>単語作成</h1>
+<%= form_with model: @word, url: words_path do |form| %>
+  <%= form.label :title, "単語" %>
+  <%= form.text_field :title %>
+  <%= form.label :content, "内容" %>
+  <%= form.text_area :content %>
+  <%= form.submit %>
+<% end %>

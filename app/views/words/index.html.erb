@@ -1,0 +1,9 @@
+<h1>単語一覧</h1>
+<ul>
+  <% @words .each do |word| %>
+   <span> 
+    <li><%= link_to word.title, word_path(word) %>
+    </li>
+    </span>
+  <% end %>
+</ul>
