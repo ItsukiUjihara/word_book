@@ -4,26 +4,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = createcurrent_user.id
-      flash[:notice]= "ログインに成功しました"
-      redirect_to root_path
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to root_path, notice: "ログインしました。"
     else
-      flash[:alert]= "ログインに失敗しました"
-      render action: "new"
+      # ログイン失敗時の処理
+      flash.now[:alert] = "メールアドレスまたはパスワードが間違っています。"
+      render 'new'
     end
   end
 
   def destroy
-    session[:user_id]=nill
-    redirect_to new_sessions_path
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    # ログアウト処理
+    session[:user_id] = nil
+    redirect_to new_sessions_path, notice: "ログアウトしました。"
   end
 
 end
