@@ -1,8 +1,8 @@
 <h2>ログイン</h2>
 <%= form_with url: create_sessions_path ,local: true,methd: :post do |form| %>
-  <%= form.label :email, "email"%>
+  <%= form.label :email%>
   <%= form.email_field :email %>
-  <%= form.label :password, "password"%>
+  <%= form.label :password%>
   <%= form.password_field :password %>
   
   <%= form.submit "ログイン" %>

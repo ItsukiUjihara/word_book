@@ -2,12 +2,14 @@ class WordsController < ApplicationController
 
   def new 
     @word = Word.new
+    @synonym = @word.synonyms.build
     
   end
   
   def create 
     @word = current_user.words.build(word_params)
       if @word.save
+        
         redirect_to words_path, notice: "登録完了"
       else
           # 保存に失敗した場合の処理
@@ -16,7 +18,8 @@ class WordsController < ApplicationController
   end
     
   def index
-    @words = Word.all
+    @words = Word.all.includes(:synonyms)
+    
   end
 
   def show
@@ -25,6 +28,7 @@ class WordsController < ApplicationController
 
   def edit
     @word = Word.find(params[:id])
+    @synonyms = Synonym.find(params[:id])
   end
 
   def update
@@ -44,9 +48,8 @@ class WordsController < ApplicationController
   
 
   private
-  def word_params 
-    params.require(:word).permit(:title, :content) 
+  def word_params
+    params.require(:word).permit(:title, :content, synonyms_attributes: [:word])
   end
-
 
 end

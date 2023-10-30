@@ -1,0 +1,7 @@
+
+  <% if session[:user_id].nil? %>
+  <%= render  'sessions/new' %>
+  <% else %>
+  <%= link_to "ログアウト", destroy_sessions_path, method: :delete %>
+  <% end %>
+  

@@ -1,8 +1,14 @@
-<h1>単語作成</h1>
-<%= form_with model: @word, url: words_path do |form| %>
+<h1>新しい単語と類義語を作成</h1>
+<%= form_with model: @word do |form| %>
   <%= form.label :title, "単語" %>
   <%= form.text_field :title %>
   <%= form.label :content, "内容" %>
   <%= form.text_area :content %>
+  
+  <%= form.fields_for :synonyms, @word.synonyms.build do |synonym_fields| %>
+    <%= synonym_fields.label :word, "類義語" %>
+    <%= synonym_fields.text_field :word %>
+  <% end %>
+  
   <%= form.submit %>
 <% end %>
