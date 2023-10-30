@@ -1,7 +1,9 @@
-
+<% unless current_page?(new_sessions_path) %>
   <% if session[:user_id].nil? %>
-  <%= render  'sessions/new' %>
+  <%= link_to "ログイン", new_sessions_path %>
   <% else %>
-  <%= link_to "ログアウト", destroy_sessions_path, method: :delete %>
+    <%= link_to "ログアウト", destroy_sessions_path, method: :delete %>
   <% end %>
-  
+  <%end%>
+
+ 
