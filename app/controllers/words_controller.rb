@@ -2,6 +2,7 @@ class WordsController < ApplicationController
 
   def new 
     @word = Word.new
+    @word.synonyms.build
   end
   
   
@@ -43,6 +44,7 @@ class WordsController < ApplicationController
 
   private
   def word_params
-    params.require(:word).permit(:title, :content, synonyms_attributes: [:word_id,:word])
+    params.require(:word).permit(:title, :content,:synonym_name, synonyms_attributes: [:word_id,:synonym_name])
+
   end
 end

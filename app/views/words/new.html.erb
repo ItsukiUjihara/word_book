@@ -7,8 +7,8 @@
   <%= form.text_area :content %>
 
   <%= form.fields_for :synonyms do |synonym_form| %>
-    <%= synonym_form.label :word, '類義語' %>
-    <%= synonym_form.text_field :word %>
+    <%= synonym_form.label :synonym_name, '類義語' %>
+    <%= synonym_form.text_field :synonym_name %>
   <% end %>
     <%= form.submit '登録' %>
 <% end %>
