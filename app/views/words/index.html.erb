@@ -1,15 +1,12 @@
-<<h1>単語一覧</h1>
+
+<h1>単語一覧</h1>
+<%= button_to "単語作成", new_word_path, method: :get %>
 <ul>
   <% @words.each do |word| %>
     <li>
       <strong><%= word.title %></strong>
       <p><%= word.content %></p>
-      <% if word.synonyms.any? %>
-        <p><strong>類義語:</strong> <%= word.synonyms.map(&:word).join(', ') %></p>
-      <% else %>
-        <p><strong>類義語:</strong> なし</p>
-      <% end %>
-      <%= link_to '詳細', word_path(word) %>
+      <%= button_to '詳細', word_path(word), method: :get%>
     </li>
   <% end %>
 </ul>

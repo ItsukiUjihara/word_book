@@ -1,2 +1,2 @@
-module WordsHelper
+module WordsHelper 
 end
