@@ -1,7 +1,7 @@
 <div class="nested-fields synonym">
-  <div class="form-group">
-    <%= form.label :synonym_name, '類義語' %>
-    <%= form.text_field :synonym_name, class: 'form-control' %>
-    <%= link_to_remove_association '削除', form, class: 'btn btn-danger' %>
+  <div data-controller="synonym">
+    <%= f.label :synonym_name, '類義語' %>
+    <%= f.text_field :synonym_name, class: 'form-control' %>
+    <%= link_to_remove_association "Remove Synonym", f %>
   </div>
 </div>
