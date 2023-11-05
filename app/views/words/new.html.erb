@@ -1,17 +1,2 @@
 <h1>単語作成</h1>
-<%= form_with(model: @word, url: words_path) do |f| %>
-  <!-- Word フォームの入力フィールドやラベルを定義 -->
-  <%= f.label :title, '単語' %>
-  <%= f.text_field :title %>
-  <%= f.label :content, '内容' %>
-  <%= f.text_area :content %>
-
-<div class = "synonym">
-  <%= f.fields_for :synonyms do |synonym| %>
-    <%= render 'words/synonym_fields', f: synonym %>
-  <% end %>
-<%= link_to_add_association 'Add Synonym', f, :synonyms %>
-</div>
-    <%= f.submit '登録' %>
-<% end %>
-<%= button_to '戻る', words_path, method: :get %>
+<%= render "words/form" %>

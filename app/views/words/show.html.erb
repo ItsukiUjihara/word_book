@@ -10,5 +10,6 @@
   <% @word.synonyms.each do |synonym| %>
     <li><%= synonym.synonym_name%></li>
   <% end %>
+  <%= render "words/back_index" %>
 </ul>
 

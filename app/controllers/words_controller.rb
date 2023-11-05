@@ -11,7 +11,7 @@ class WordsController < ApplicationController
       if @word.save
         redirect_to word_path(@word)
       else
-          render 'new'
+        render 'new'
       end    
   end
 
@@ -20,15 +20,15 @@ class WordsController < ApplicationController
   end
 
   def show
-    @word = Word.find(params[:id])
+    find
   end
 
   def edit
-    @word = Word.find(params[:id])
+    find
   end
 
   def update
-    @word = Word.find(params[:id])
+    find
     if @word.update(word_params)
       redirect_to word_path(@word)
     else
@@ -41,10 +41,14 @@ class WordsController < ApplicationController
     @word.destroy
     redirect_to words_path
   end
-
+  
   private
   def word_params
-    params.require(:word).permit(:title, :content,:synonym_name, synonyms_attributes: [:word_id,:synonym_name])
+    params.require(:word).permit(:title, :content,:synonym_name,
+      synonyms_attributes: [:id,:word_id,:synonym_name,:_destroy])
+  end
 
+  def find
+    @word = Word.find(params[:id])
   end
 end
