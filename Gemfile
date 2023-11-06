@@ -45,9 +45,9 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem 'bootstrap', '~> 5.0.2'
 
-gem 'cocoon'
-
 gem "jquery-rails"
+
+gem 'cocoon'
 
 gem 'pry'
 group :development, :test do
