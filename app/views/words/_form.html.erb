@@ -1,0 +1,20 @@
+<%= form_for @word do |f| %>
+  <div class="field">
+    <%= f.label :title, '単語' %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content, '内容' %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div id = "synonyms">
+    <%= f.fields_for :synonyms do |synonym| %>
+      <%= render 'words/synonym_fields', f: synonym %>
+    <% end %>
+  </div>
+  <div class="links">
+  </div>
+  <%= f.submit '登録' %>
+<% end %>
+<%= render "words/back_index" %>

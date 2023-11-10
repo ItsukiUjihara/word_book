@@ -1,6 +1,3 @@
 class Synonym < ApplicationRecord
-  belongs_to :word
-  def synonym
-    # synonym メソッドの実装
-  end
+  belongs_to :word, inverse_of: :synonyms
 end

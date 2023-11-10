@@ -2,10 +2,14 @@
 <p><strong>単語:</strong> <%= @word.title %></p>
 <p><strong>内容:</strong> <%= @word.content %></p>
 
-<% if @word.synonyms.any? %>
-  <p><strong>類義語:</strong> <%= @word.synonyms.map(&:synonym).join(', ') %></p>
-<% end %>
-
-<%= link_to '戻る', words_path %>
 <%= button_to "編集", edit_word_path(@word), method: :get %>
 <%= button_to "削除", word_path(@word), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger", disabled: current_user != @word.user %>
+
+<h2>類義語</h2>
+<ul>
+  <% @word.synonyms.each do |synonym| %>
+    <li><%= synonym.synonym_name%></li>
+  <% end %>
+  <%= render "words/back_index" %>
+</ul>
+

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
+    "cocoon-js": "^0.0.5",
+    "cocoon-js-vanilla": "^1.3.0",
+    "jquery": "^3.7.1"
+  }
+}

@@ -45,6 +45,12 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem 'bootstrap', '~> 5.0.2'
 
+gem 'jsbundling-rails'
+
+gem "jquery-rails"
+
+gem 'cocoon', '~> 1.2'
+
 gem 'pry'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
