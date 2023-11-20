@@ -1,0 +1,14 @@
+<h1>クイズ</h1>
+<p>問題: <%= @quiz[:question] %></p>
+
+<%= form_tag(submit_answer_quiz_path, method: :post) do %>
+  <% @quiz[:choices].each do |choice| %>
+    <label>
+      <%= radio_button_tag(:choice, choice) %>
+      <%= choice %>
+    </label><br>
+  <% end %>
+  <%= submit_tag("回答する") %>
+<% end %>
+
+<%= link_to "進捗をリセット", reset_progress_quizzes_path %>

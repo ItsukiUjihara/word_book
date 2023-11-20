@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  resources :quizzes, only: [:show] do
+    post 'submit_answer', on: :member
+    get 'track_progress', on: :collection
+    delete 'reset_progress', on: :collection
+  end
   root "words#index"
   resources :users
   resources :words do
