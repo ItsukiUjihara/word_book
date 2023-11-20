@@ -1,22 +1,14 @@
 <h1>クイズ</h1>
+<p>問題: <%= @quiz[:question] %></p>
 
-<p><strong>問題:</strong> <%= @quiz[:question] %></p>
-
-<form action="<%= submit_answer_quiz_path(@quiz) %>" method="post">
-  <% @quiz[:choices].each_with_index do |choice, index| %>
-    <input type="radio" name="choice" value="<%= choice %>" id="choice<%= index %>">
-    <label for="choice<%= index %>"><%= choice %></label><br>
+<%= form_tag(submit_answer_quiz_path, method: :post) do %>
+  <% @quiz[:choices].each do |choice| %>
+    <label>
+      <%= radio_button_tag(:choice, choice) %>
+      <%= choice %>
+    </label><br>
   <% end %>
-  <input type="submit" value="回答">
-</form>
-
-<% flash.each do |key, message| %>
-  <div class="alert alert-<%= key %>">
-    <%= message %>
-  </div>
+  <%= submit_tag("回答する") %>
 <% end %>
 
-
-<p>進行状況: <%= @answered_count + 1 %> 問中 <%= @correct_count %> 問正解</p>
-
-<%= link_to '進行状況をリセット', reset_progress_quizzes_path, method: :delete %>
+<%= link_to "進捗をリセット", reset_progress_quizzes_path %>
